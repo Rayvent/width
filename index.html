@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Углы падения лучей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f8efd4, #d4d9e3);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            height: auto;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .result {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Углы падения лучей</h1>
+        <input type="number" id="latitude" placeholder="Введите широту города (°)" />
+        <button onclick="calculateAngles()">Посчитать</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        function calculateAngles() {
+            const latitude = parseFloat(document.getElementById('latitude').value);
+
+            if (isNaN(latitude) || latitude < -90 || latitude > 90) {
+                alert('Введите значение от -90 до 90 градусов.');
+                return;
+            }
+
+            const equinoxAngle = 90 - latitude;
+            const summerSolsticeAngle = 90 - latitude + 23.5;
+            const winterSolsticeAngle = 90 - latitude - 23.5;
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result">Дни равноденствия (21.03 & 23.09): <strong>${equinoxAngle.toFixed(2)}°</strong></div>
+                <div class="result">Летнее солнцестояние (22.06): <strong>${summerSolsticeAngle.toFixed(2)}°</strong></div>
+                <div class="result">Зимнее солнцестояние (22.12): <strong>${winterSolsticeAngle.toFixed(2)}°</strong></div>
+            `;
+        }
+    </script>
+</body>
+</html>
