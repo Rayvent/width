@@ -42,7 +42,7 @@
         background-color: #4caf50;
         color: white;
         border: none;
-        padding: 8px 16px; /* Уменьшенные отступы */
+        padding: 8px 8px; /* Уменьшенные отступы */
         border-radius: 5px;
         font-size: 14px; /* Меньший размер текста */
         cursor: pointer;
@@ -96,7 +96,7 @@
 
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = `
-                <div class="result">Дни равноденствия (21.03 & 23.09): <strong>${equinoxAngle.toFixed(2)}°</strong></div>
+                <div class="result">Дни равноденствия (21.03 и 23.09): <strong>${equinoxAngle.toFixed(2)}°</strong></div>
                 <div class="result">Летнее солнцестояние (22.06): <strong>${summerSolsticeAngle.toFixed(2)}°</strong></div>
                 <div class="result">Зимнее солнцестояние (22.12): <strong>${winterSolsticeAngle.toFixed(2)}°</strong></div>
             `;
